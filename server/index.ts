@@ -24,6 +24,8 @@ const authMiddleware =
 
 app.all('/token', authMiddleware, tokenEndpoint);
 app.all('/recordingrules', authMiddleware, recordingRulesEndpoint);
+console.log("***endeposint 6 ***")
+
 
 app.use((req, res, next) => {
   // Here we add Cache-Control headers in accordance with the create-react-app best practices.
