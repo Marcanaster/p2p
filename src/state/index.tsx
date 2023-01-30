@@ -92,7 +92,7 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
     contextValue = {
       ...contextValue,
       getToken: async (user_identity, room_name) => {
-        const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT || '/token';
+        const endpoint = '/token';// process.env.REACT_APP_TOKEN_ENDPOINT || '/token';
 
         console.log("***endeposint 1 ***", endpoint)
 
