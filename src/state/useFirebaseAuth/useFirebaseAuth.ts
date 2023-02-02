@@ -21,10 +21,18 @@ export default function useFirebaseAuth() {
       const idToken = await user!.getIdToken();
       headers.set('Authorization', idToken);
       headers.set('content-type', 'application/json');
+      headers.set('Access-Control-Allow-Credentials', 'true');
+      headers.set('Access-Control-Allow-Origin', '*');
+      // another common pattern
+      // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+      headers.set('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+      headers.set(
+        'Access-Control-Allow-Headers',
+        'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+      );
 
       const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT || '/token';
-      console.log("***endeposint 3 ***", endpoint)
-
+      console.log('***endeposint 3 ***', endpoint);
 
       return fetch(endpoint, {
         method: 'POST',
