@@ -97,14 +97,9 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
         console.log("***endeposint 1 ***", endpoint)
 
         return fetch(endpoint, {
-          mode: 'no-cors',
           method: 'POST',
           headers: {
             'content-type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Credentials': 'true',
-            'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
-            'Access-Control-Allow-Headers': 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
           },
           body: JSON.stringify({
             user_identity,
@@ -115,9 +110,6 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
       },
       updateRecordingRules: async (room_sid, rules) => {
         const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT || '/recordingrules';
-        console.log("***endeposint 2 ***", endpoint)
-
-
         return fetch(endpoint, {
           headers: {
             'Content-Type': 'application/json',
